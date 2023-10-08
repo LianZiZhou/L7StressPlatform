@@ -78,6 +78,7 @@ app.listen(process.env.SOCKET_PORT || 13299, () => {
 }).on('upgrade', (request, socket, head) => {
     request.path = request.url.split('?')[0];
     request.form = request.url.split('?')[1];
+    if(!request.form) request.form = '';
     const formSplit = request.form.split('&');
     request.query = {};
     for(let i = 0; i < formSplit.length; i++) {
