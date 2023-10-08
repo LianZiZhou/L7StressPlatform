@@ -9,6 +9,7 @@ setInterval(async () => {
     const postCount = parseInt(await client.get('l7sp-req-post'));
     await client.set('l7sp-req-get', 0);
     await client.set('l7sp-req-post', 0);
+    console.log('GET: ' + getCount + ' POST: ' + postCount);
     await supabase.from('stats').insert({
         get: getCount,
         post: postCount
