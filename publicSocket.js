@@ -8,6 +8,8 @@ const websocket = new ws.Server({ noServer: true });
 
 app.use(express.json({ limit: '50mb'}));
 
+app.use(express.static('public'));
+
 app.post('/api/backend/push', (req, res) => {
     if(req.headers['authorization'] !== 'Bearer ' + process.env.STAT_TOKEN) {
         res.send({
